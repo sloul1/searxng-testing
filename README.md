@@ -93,6 +93,9 @@ I suggest not to use too high numbers in **searxng-parallel.py** script's **num_
                 futures.append(future)
                 #time.sleep(0.1)  # Uncomment toadd delay (in seconds) between searches
 ```
-> [!WARNING] Running too many parallel requests at high rate results rate limiting suspension (=blocking) on search engines. 
+> [!WARNING]
+> Running too many parallel requests at high rate results rate limiting suspension (=blocking) on search engines.
+ 
 ![](images/ratelimiting-02.png)  
+
 Suspension time may vary on different search engines.
