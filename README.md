@@ -41,7 +41,7 @@ Query should give installation path...
 ```bash
 python3: /usr/bin/python3 /usr/lib/python3 /etc/python3 /usr/share/python3 /usr/share/man/man1/python3.1.gz
 ```
-...and Python version as result.
+...and Python version as result. [Python official documentation](https://docs.python.org/3.12/). **Check right version for your setup from drop down menu.**
 ```bash
 Python 3.12.3
 ```
