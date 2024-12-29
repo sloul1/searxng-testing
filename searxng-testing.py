@@ -14,10 +14,10 @@ url = os.getenv("SEARCH_ENGINE_URL")
 search_queries = ["test query 1", "test query 2", "test query 3"]
 
 # Set the number of iterations
-num_iterations = 20
+num_iterations = 5
 
-# Set the delay between requests
-delay = 0.01
+# Set the delay between requests in seconds
+delay = 1.00
 
 # Start the timer
 start_time = time.time()
@@ -64,6 +64,7 @@ for i in range(num_iterations):
     time.sleep(delay)
     if elapsed_time >= 10:
         break
+    # Wait for number of requests
     #else:
     #    requests_num == 20
     #    break
