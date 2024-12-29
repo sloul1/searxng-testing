@@ -30,23 +30,26 @@ For connectivity https://tailscale.com/
 Docker engine installation scripts for various operating systems can be found at https://github.com/sloul1/docker
 ### Self hosted SearXNG instance on Docker with SSL certificates
 
-For hosting my own instance of SearXNG I used [Alex Kretzchmar's written instructions](https://blog.ktz.me/replacing-google-with-searxng-as-the-default-in-chrome/) regarding [Tailscale YouTube channel's intrucion video](https://www.youtube.com/watch?v=cg9d87PuanE).
+For hosting my own instance of SearXNG I used [Alex Kretzchmar's written instructions](https://blog.ktz.me/replacing-google-with-searxng-as-the-default-in-chrome/) regarding [Tailscale YouTube channel's intruction video](https://www.youtube.com/watch?v=cg9d87PuanE).
 
-### Python, virtual environment and some pip dependencies
+### Check and install Python
 Query if Python is installed and what version:
 ```bash
 whereis python3 && python3 -V
 ```
-Query should give installation path as result.
+Query should give installation path...
 ```bash
 python3: /usr/bin/python3 /usr/lib/python3 /etc/python3 /usr/share/python3 /usr/share/man/man1/python3.1.gz
+```
+...and Python version as result.
+```bash
 Python 3.12.3
 ```
 If for some reason Python is not present it can be installed:
 ```bash
 sudo apt update && sudo apt install python3
 ```
-  
+### Using Python virtual environment
 Create [Python virtual environment](https://docs.python.org/3/library/venv.html#):
 ```bash
 python3 -m venv venv
@@ -69,6 +72,8 @@ But for now **we need virtual environment to be activated**.
 ```bash
 (venv) peppertp15ubu@peppertp15ubu-ThinkPad-E15-Gen-3:~/github/sloul1/searxng-testing$
 ``` 
+### Installing project's dependencies
+
 Pipreqs is handy tool for handling project's dependencies.
 ```bash
 pip install pipreqs
@@ -106,16 +111,16 @@ Installing collected packages: Requests, python-dotenv
 Successfully installed Requests-2.32.3 python-dotenv-1.0.1
 ```
 ### Caution
-> **Go through scripts code and learn how they work before running them.**
+> **Go through code and learn how it works before running script.**
 
 > [!WARNING]
-> Running too many parallel requests at high rate results rate limiting suspension (=blocking) on search engines.
+> Running too many parallel requests at high rate can result rate limiting suspension (=blocking) on search engines. Suspension time may vary on different search engines.  
+
  
 ![](images/ratelimiting-02.png)  
 
-Suspension time may vary on different search engines.  
 
-This can be unpleasant example of learning about rate limiting the hard way. Too many searches within too little time can result blocking your IP address on used search engines. This happens because this kind of activity is identified as Denial Of Service attack. https://www.cloudflare.com/learning/bots/what-is-rate-limiting/ 
+This can be unpleasant surprise and example of learning about rate limiting the hard way. Too many searches within too little time can result blocking your IP address on used search engines. This happens because this kind of activity can be identified as [bot attack](https://www.cloudflare.com/learning/bots/what-is-rate-limiting/). 
 ![](images/ratelimiting-01.png)
 I suggest not to use too high numbers in **searxng-parallel.py** script's **num_threads = 2** and **range(25)** values.
 ```python
